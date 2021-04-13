@@ -1,15 +1,23 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Places from "./store/reducers/index";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { MainStackNavigator } from "./navigation/MainStackNavigator";
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
+const reducer = combineReducers({ places: Places });
+const store = createStore(reducer, applyMiddleware(thunk));
 export default function App() {
   return (
     <View style={styles.container}>
-      <NavigationContainer>
-        <MainStackNavigator />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <MainStackNavigator />
+        </NavigationContainer>
+      </Provider>
     </View>
   );
 }

@@ -1,5 +1,4 @@
 import React from "react";
-// import { View, Text, TouchableOpacity, Touchable } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import PlacesScreen from "../screens/PlacesScreen";
 import DetailScreen from "../screens/DetailsScreen";
