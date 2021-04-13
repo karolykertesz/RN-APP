@@ -11,14 +11,14 @@ import {
 } from "react-native";
 import colors from "../helpers/colors";
 
-const NewPlaceScreen = ({ route }) => {
-  const navigation = route.navigation;
-  const [value, setValue] = useState("");
+const NewPlaceScreen = ({ navigation }) => {
+  const [title, setValue] = useState("");
   const dispatch = useDispatch();
   const savePlaces = () => {
-    dispatch(addPlaces(value));
+    dispatch(addPlaces(title));
     navigation.goBack();
   };
+
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.form}>
@@ -29,9 +29,13 @@ const NewPlaceScreen = ({ route }) => {
           autoCapitalize="none"
           autoCompleteType="off"
           onChangeText={(text) => setValue(text)}
-          value={value}
+          value={title}
         />
-        <Button title="Add my Place" color={colors.main} onPress={() => {}} />
+        <Button
+          title="Add my Place"
+          color={colors.main}
+          onPress={() => savePlaces()}
+        />
       </View>
     </ScrollView>
   );

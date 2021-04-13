@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
- const DetailScreen = () => {
+const DetailScreen = ({ route, navigation }) => {
+  const { title, id } = route.params;
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: title,
+    });
+  });
   return (
     <View
       style={{
         flex: 1,
-        alignItems: "center",
         justifyContent: "center",
         width: "100%",
       }}
@@ -17,5 +22,3 @@ import { View, Text, StyleSheet } from "react-native";
 export default DetailScreen;
 
 const styles = StyleSheet.create({});
-
-
