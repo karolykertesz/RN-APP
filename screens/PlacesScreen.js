@@ -12,7 +12,7 @@ const PlacesScreen = ({ navigation }) => {
         keyExtractor={(item) => item.id}
         renderItem={(itemData) => (
           <OnePlace
-            image={null}
+            image={itemData.item.url}
             title={itemData.item.title}
             address={null}
             onSelect={() =>

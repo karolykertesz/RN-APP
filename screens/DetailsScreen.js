@@ -15,7 +15,7 @@ const DetailScreen = ({ route, navigation }) => {
         width: "100%",
       }}
     >
-      <Text>Places Screen</Text>
+      <Text>Details Screen</Text>
     </View>
   );
 };

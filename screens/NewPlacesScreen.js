@@ -10,15 +10,19 @@ import {
   Button,
 } from "react-native";
 import colors from "../helpers/colors";
+import ImageComps from "../componets/ImageComps";
 
 const NewPlaceScreen = ({ navigation }) => {
+  const [imgUrl, setImgUrl] = useState();
   const [title, setValue] = useState("");
   const dispatch = useDispatch();
   const savePlaces = () => {
-    dispatch(addPlaces(title));
+    dispatch(addPlaces(title, imgUrl));
     navigation.goBack();
   };
-
+  const addImageUri = (uri) => {
+    setImgUrl(uri);
+  };
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.form}>
@@ -31,6 +35,7 @@ const NewPlaceScreen = ({ navigation }) => {
           onChangeText={(text) => setValue(text)}
           value={title}
         />
+        <ImageComps addImageUri={addImageUri} />
         <Button
           title="Add my Place"
           color={colors.main}

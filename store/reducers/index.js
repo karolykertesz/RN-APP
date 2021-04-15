@@ -8,7 +8,7 @@ const Places = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLACES:
       const id = new Date().toString();
-      const addedPlace = new Place(id, action.title);
+      const addedPlace = new Place(id, action.title, action.url);
       return {
         places: state.places.concat(addedPlace),
       };
