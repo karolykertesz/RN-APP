@@ -7,7 +7,11 @@ import { MainStackNavigator } from "./navigation/MainStackNavigator";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+import { init } from "./helpers/sqlite";
 
+init()
+  .then(() => console.log("data inserted"))
+  .catch((err) => console.log(err));
 const reducer = combineReducers({ places: Places });
 const store = createStore(reducer, applyMiddleware(thunk));
 export default function App() {

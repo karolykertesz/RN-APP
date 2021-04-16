@@ -40,6 +40,7 @@ const ImageComps = ({ addImageUri }) => {
     });
 
     if (!result.cancelled) {
+      console.log(result.uri);
       setImage(result.uri);
       addImageUri(result.uri);
     }

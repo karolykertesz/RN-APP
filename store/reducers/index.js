@@ -1,4 +1,4 @@
-import { ADD_PLACES } from "../actions/index";
+import { ADD_PLACES, ADD_DATA } from "../actions/index";
 import Place from "../../models/places";
 
 const initialState = {
@@ -6,9 +6,18 @@ const initialState = {
 };
 const Places = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_DATA:
+      return {
+        places: action.places.map((item) => {
+          new Place(item.id.toString(), item.title, item.imgUrl);
+        }),
+      };
     case ADD_PLACES:
-      const id = new Date().toString();
-      const addedPlace = new Place(id, action.title, action.url);
+      const addedPlace = new Place(
+        action.id.toString(),
+        action.title,
+        action.url
+      );
       return {
         places: state.places.concat(addedPlace),
       };
