@@ -23,6 +23,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.apk.rnmap",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDQFVw5EqGieTs9Sp3o1FaZlKoK5BIE2d8"
+        }
       }
     },
     "web": {

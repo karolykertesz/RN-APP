@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import OnePlace from "../components/OnePlace";
 import { addData } from "../store/actions";

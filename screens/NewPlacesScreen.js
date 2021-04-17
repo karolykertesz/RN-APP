@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPlaces } from "../store/actions/index";
+import MapView from "react-native-maps";
 import {
   View,
   Text,
@@ -11,6 +12,7 @@ import {
 } from "react-native";
 import colors from "../helpers/colors";
 import ImageComps from "../componets/ImageComps";
+import LocationG from "../components/Location";
 
 const NewPlaceScreen = ({ navigation }) => {
   const [imgUrl, setImgUrl] = useState();
@@ -36,6 +38,16 @@ const NewPlaceScreen = ({ navigation }) => {
           value={title}
         />
         <ImageComps addImageUri={addImageUri} />
+        <LocationG />
+        <MapView
+          style={{ width: "100%", height: 150 }}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
         <Button
           title="Add my Place"
           color={colors.main}

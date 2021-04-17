@@ -8,9 +8,9 @@ const Places = (state = initialState, action) => {
   switch (action.type) {
     case ADD_DATA:
       return {
-        places: action.places.map((item) => {
-          new Place(item.id.toString(), item.title, item.imgUrl);
-        }),
+        places: action.places.map(
+          (item) => new Place(item.id.toString(), item.title, item.imgUrl)
+        ),
       };
     case ADD_PLACES:
       const addedPlace = new Place(

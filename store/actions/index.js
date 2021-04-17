@@ -39,9 +39,8 @@ export const addData = () => {
   return async function (dispatch) {
     try {
       const data = await fetchData();
-      console.log(data.rows._array);
-      console.log(data);
-      dispatch({ type: ADD_DATA, places: data.rows._array });
+      const { rows } = data;
+      dispatch({ type: ADD_DATA, places: rows._array });
     } catch (err) {
       console.log(err);
     }
