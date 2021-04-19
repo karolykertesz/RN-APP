@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-
+import MapComp from "./mapComp";
 import * as Location from "expo-location";
 import colors from "../helpers/colors";
+import MapView from "react-native-maps";
 import {
   View,
   Text,
@@ -12,7 +13,14 @@ import {
 } from "react-native";
 const LocationG = () => {
   const [loc, setLoc] = useState(null);
+  const [loci, setLoci] = useState(false);
+  const [lat, setlangi] = useState(null);
+  const [longi, setLongi] = useState(null);
   const [loading, setLoading] = useState(false);
+  const setMapLocation = (lati, lon) => {
+    setlangi(lati);
+    setLongi(lon);
+  };
   const setLocation = async () => {
     let { status } = await Location.requestPermissionsAsync();
     if (status !== "granted") {
@@ -23,7 +31,10 @@ const LocationG = () => {
       let location = await Location.getCurrentPositionAsync({
         timeInterval: 5000,
       });
-      console.log(location);
+      if (location) {
+        console.log(location);
+        setMapLocation(location.coords.latitude, location.coords.longitude);
+      }
     } catch (err) {
       alert("Location couldn't be set!!");
     }
@@ -33,11 +44,24 @@ const LocationG = () => {
 
   return (
     <View style={styles.screen}>
+      {loading && <ActivityIndicator size="large" color={colors.main} />}
       <View style={styles.lctText}>
-        {loading ? (
-          <ActivityIndicator size="large" color={colors.main} />
+        {lat ? (
+          <MapView
+            style={{ width: "100%", height: 150 }}
+            region={{
+              latitude: lat,
+              longitude: longi,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            zoomEnabled={true}
+            zoomTapEnabled={true}
+            maxZoomLevel={10}
+            showsUserLocation={true}
+          />
         ) : (
-          <Text>"No Location yet!"</Text>
+          <Text>No location added Yet</Text>
         )}
       </View>
       <Button

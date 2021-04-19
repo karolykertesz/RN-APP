@@ -39,15 +39,6 @@ const NewPlaceScreen = ({ navigation }) => {
         />
         <ImageComps addImageUri={addImageUri} />
         <LocationG />
-        <MapView
-          style={{ width: "100%", height: 150 }}
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        />
         <Button
           title="Add my Place"
           color={colors.main}
